@@ -6,11 +6,13 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const User = require('./routes/user');
 const Book = require('./routes/book');
+const Favourite = require('./routes/favourite');
 
 
 //routes
 app.use('/api/v1/users', User);
 app.use('/api/v1/books', Book);
+app.use('/api/v1/favourites', Favourite);
 
 //connect to mongodb
 mongoose.connect(process.env.MongoDB_URI)
