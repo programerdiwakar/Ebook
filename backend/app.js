@@ -8,6 +8,7 @@ const User = require('./routes/user');
 const Book = require('./routes/book');
 const Favourite = require('./routes/favourite');
 const Cart = require('./routes/cart');
+const Order = require('./routes/order');
 
 
 //routes
@@ -15,6 +16,7 @@ app.use('/api/v1/users', User);
 app.use('/api/v1/books', Book);
 app.use('/api/v1/favourites', Favourite);
 app.use('/api/v1/cart', Cart);
+app.use('/api/v1/orders', Order)
 //connect to mongodb
 mongoose.connect(process.env.MongoDB_URI)
     .then(() => {
