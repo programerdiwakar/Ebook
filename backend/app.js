@@ -1,15 +1,18 @@
 const express = require('express');
 const app = express();
-app.use(express.json());
+const cors = require('cors');
+require('dotenv').config();
 const port = 3000;
 const mongoose = require('mongoose');
-require('dotenv').config();
+
 const User = require('./routes/user');
 const Book = require('./routes/book');
 const Favourite = require('./routes/favourite');
 const Cart = require('./routes/cart');
 const Order = require('./routes/order');
 
+app.use(cors());
+app.use(express.json());
 
 //routes
 app.use('/api/v1/users', User);
@@ -24,6 +27,7 @@ mongoose.connect(process.env.MongoDB_URI)
         app.listen(port, () => {
             console.log(`Server is running on ${port}`);
         });
+        console.log("backend");
     })
     .catch((err) => {
         console.log(err);
