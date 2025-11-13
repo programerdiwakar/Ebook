@@ -7,6 +7,7 @@ import SignUp from './pages/SignUp.jsx'
 import AllBooks from './pages/AllBooks.jsx'
 import Profile from './pages/Profile.jsx'
 import Cart from './pages/Cart.jsx'
+import ViewBookDetails from './components/ViewBookDetails/ViewBookDetails.jsx';
 
 const App = () => {
   return (
@@ -19,7 +20,8 @@ const App = () => {
           <Route path="/signIn" element={<SignIn />} />
           <Route  path="/signUp" element={<SignUp/>} />
           <Route path="/cart" element={<Cart/>} />
-          <Route  path="/profile" element={<Profile/>} />
+          <Route path="/profile" element={<Profile />} />
+          <Route  path="/view-book-details/:id" element={<ViewBookDetails />} />
         </Routes>
         <Footer />
 

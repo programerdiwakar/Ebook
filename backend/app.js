@@ -19,7 +19,7 @@ app.use('/api/v1/users', User);
 app.use('/api/v1/books', Book);
 app.use('/api/v1/favourites', Favourite);
 app.use('/api/v1/cart', Cart);
-app.use('/api/v1/orders', Order)
+app.use('/api/v1/orders', Order);
 //connect to mongodb
 mongoose.connect(process.env.MongoDB_URI)
     .then(() => {

@@ -90,7 +90,7 @@ router.get('/get-recent-books', async (req, res) => {
 });
 
 //get book by id
-router.get('/get-book-by-id/:id', authenticateToken, async (req, res) => {
+router.get('/get-book-by-id/:id', async (req, res) => {
     try {
         const { id } = req.params;
         const book = await Book.findById(id);
