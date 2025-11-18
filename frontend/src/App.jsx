@@ -1,7 +1,7 @@
 import Home from './pages/Home.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
 import Footer from './components/Footer/Footer.jsx';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import {  Routes, Route } from 'react-router-dom';
 import SignIn from './pages/SignIn.jsx';
 import SignUp from './pages/SignUp.jsx'
 import AllBooks from './pages/AllBooks.jsx'
@@ -12,7 +12,6 @@ import ViewBookDetails from './components/ViewBookDetails/ViewBookDetails.jsx';
 const App = () => {
   return (
     <div>
-      <Router>
         <Navbar />
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -24,8 +23,6 @@ const App = () => {
           <Route  path="/view-book-details/:id" element={<ViewBookDetails />} />
         </Routes>
         <Footer />
-
-      </Router>
       
     </div>
   )
