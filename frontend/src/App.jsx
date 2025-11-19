@@ -1,29 +1,42 @@
 import Home from './pages/Home.jsx';
 import Navbar from './components/Navbar/Navbar.jsx';
 import Footer from './components/Footer/Footer.jsx';
-import {  Routes, Route } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import SignIn from './pages/SignIn.jsx';
 import SignUp from './pages/SignUp.jsx'
 import AllBooks from './pages/AllBooks.jsx'
 import Profile from './pages/Profile.jsx'
 import Cart from './pages/Cart.jsx'
 import ViewBookDetails from './components/ViewBookDetails/ViewBookDetails.jsx';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { authActions }  from './store/auth';
 
 const App = () => {
+  const dispatch = useDispatch();
+  const role = useSelector((state) => state.auth.role);
+  useEffect(() => {
+    if (localStorage.getItem("id") &&
+      localStorage.getItem("token") &&
+      localStorage.getItem("role")) {
+      dispatch(authActions.login());
+      dispatch(authActions.changeRole(localStorage.getItem("role")));
+    }
+  }, []);
   return (
     <div>
-        <Navbar />
-        <Routes>
-          <Route exact path="/" element={<Home />} />
-          <Route  path="/all-books" element={<AllBooks/>} />
-          <Route path="/signIn" element={<SignIn />} />
-          <Route  path="/signUp" element={<SignUp/>} />
-          <Route path="/cart" element={<Cart/>} />
-          <Route path="/profile" element={<Profile />} />
-          <Route  path="/view-book-details/:id" element={<ViewBookDetails />} />
-        </Routes>
-        <Footer />
-      
+      <Navbar />
+      <Routes>
+        <Route exact path="/" element={<Home />} />
+        <Route path="/all-books" element={<AllBooks />} />
+        <Route path="/signIn" element={<SignIn />} />
+        <Route path="/signUp" element={<SignUp />} />
+        <Route path="/cart" element={<Cart />} />
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/view-book-details/:id" element={<ViewBookDetails />} />
+      </Routes>
+      <Footer />
+
     </div>
   )
 }

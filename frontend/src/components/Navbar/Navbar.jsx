@@ -27,7 +27,7 @@ const Navbar = () => {
     if (isLoggedIn == false) {
         links.splice(2, 2); // remove two items starting from index 2
     }
-    
+
     const [MobileNav, setMobileNav] = useState("hidden");
     return (
         <>
@@ -40,14 +40,32 @@ const Navbar = () => {
                 <div className='nav-links-booknest block md:flex  items-center gap-2'>
                     <div className=' hidden md:flex gap-4'>
                         {links.map((items, i) => (
-                            <Link to={items.link} key={i} className='hover:text-blue-500 transition-all duration-300'>{items.title}</Link>
+                            <>
+                                {items.title === 'Profile' ? (
+                                    <Link to={items.link}
+                                        key={i}
+                                        className='hover:text-blue-500 border border-blue-500 transition-all duration-300'>
+                                        {items.title}
+                                    </Link>
+                                ) : (
+                                    <Link to={items.link}
+                                        key={i}
+                                        className='hover:text-blue-500 transition-all duration-300'>
+                                        {items.title}{" "}
+                                    </Link>
+                                )}
+                            </>
                         ))}
                     </div>
 
-                    <div className=' hidden md:flex gap-4'>
-                        <Link to='/signIn' className='px-2 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300'>SignIn</Link>
-                        <Link to='/signUp' className=' px-2 py-1 bg-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300'>SignUp</Link>
-                    </div>
+
+                    {isLoggedIn === false &&
+                        <div className=' hidden md:flex gap-4'>
+                            <Link to='/signIn' className='px-2 py-1 border border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300'>SignIn</Link>
+                            <Link to='/signUp' className=' px-2 py-1 bg-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300'>SignUp</Link>
+                        </div>
+                    }
+
                     <button className=' block md:hidden text-white text-2xl hover:text-zinc-400' onClick={() => (MobileNav === "hidden" ? setMobileNav("block") : setMobileNav("hidden"))}>
                         <GiHamburgerMenu />
                     </button>
@@ -64,18 +82,23 @@ const Navbar = () => {
                         {items.title}{" "}
                     </Link>
                 ))}
-                <Link
-                    to='/signIn' 
-                    className={`${MobileNav} px-4 py-2 mb-10 border text-3xl font-semibold text-white border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300`}
-                    onClick={() => (MobileNav === "hidden" ? setMobileNav("block") : setMobileNav("hidden"))}
-                >
-                    SignIn
-                </Link>
-                <Link to='/signUp' className={`${MobileNav} px-4 py-2 mb-10 text-3xl font-semibold text-white bg-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-3001`}
-                    onClick={() => (MobileNav === "hidden" ? setMobileNav("block") : setMobileNav("hidden"))}
-                >
-                    SignUp
-                </Link>
+                {isLoggedIn === false &&
+                    <>
+                        <Link
+                            to='/signIn'
+                            className={`${MobileNav} px-4 py-2 mb-10 border text-3xl font-semibold text-white border-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-300`}
+                            onClick={() => (MobileNav === "hidden" ? setMobileNav("block") : setMobileNav("hidden"))}
+                        >
+                            SignIn
+                        </Link>
+                        <Link to='/signUp' className={`${MobileNav} px-4 py-2 mb-10 text-3xl font-semibold text-white bg-blue-500 rounded hover:bg-white hover:text-zinc-800 transition-all duration-3001`}
+                            onClick={() => (MobileNav === "hidden" ? setMobileNav("block") : setMobileNav("hidden"))}
+                        >
+                            SignUp
+                        </Link>
+                    </>
+
+                }
             </div>
         </>
 
