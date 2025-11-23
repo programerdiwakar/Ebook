@@ -13,7 +13,7 @@ const Hero = () => {
                     and boundless imagination—all handpicked for curious minds.
                 </p>
                 <Link to='/all-books' className='mt-8'>
-                    <button className='text-yellow-100 text-xl lg:text-2xl font-semibold border border-yellow-100 px-10 py-3 hover:bg-zinc-800 rounded-full'>
+                    <button className='text-yellow-100 text-xl lg:text-2xl font-semibold border border-yellow-100 px-10 py-3 hover:bg-yellow-500 rounded-full hover:text-white hover:transform transition-all duration-300 ease-in-out'>
                     Explore the Collection
                     </button>
                 </Link>
