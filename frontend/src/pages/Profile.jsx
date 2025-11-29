@@ -23,13 +23,13 @@ const Profile = () => {
     fitch();
   }, [])
   return (
-    <div className='bg-zinc-900 px-2 md:px-12 flex flex-col md:flex-row h-screen py-8'>
-      {!profile && <div className='w-full h-[100%] flex justify-center items-center'>
+    <div className='bg-zinc-900 px-2 md:px-12 flex flex-col md:flex-row  py-8 gap-4 text-white h-full'>
+      {!profile && <div className='w-full h-screen flex justify-center items-center'>
         <Loader />{" "}
       </div>}
       {profile &&
         <>
-          <div className='w-full md:w-1/6'>
+          <div className='w-full md:w-1/6 md:h-screen h-auto'>
             <Sidebar data={profile} />
           </div>
           <div className='w-full md:w-5/6'>
