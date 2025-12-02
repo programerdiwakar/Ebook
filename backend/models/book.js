@@ -29,4 +29,4 @@ const booksSchema = new mongoose.Schema({
     
 }, { timestamps: true }); // here timestamps will use to sort the orders based on time
 
-module.exports = mongoose.model('books', booksSchema);
+module.exports = mongoose.model('book', booksSchema);

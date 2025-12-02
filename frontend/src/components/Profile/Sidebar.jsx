@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import { RiLogoutBoxRLine } from "react-icons/ri";
 
 const Sidebar = (data) => {
-  console.log(data.data.username)
   return (
     <div className='text-white bg-zinc-800 p-4 rounded flex flex-col items-center justify-between h-[100%]'>
       <div className='flex items-center flex-col justify-center'>

@@ -50,6 +50,7 @@ const Cart = () => {
         { headers }
       );
       alert(response.data.message);
+      console.log(response);
       Navigate("/profile/orderHistory")
     } catch (error) {
       console.log(error);
@@ -69,7 +70,7 @@ const Cart = () => {
             <h1 className='text-5xl lg:text-6xl font-semibold text-zinc-400'>
               Empty Cart
             </h1>
-            <img src="" alt="" />
+            {/* <img src="" alt="" /> */}
           </div>
         </div>
       )}
