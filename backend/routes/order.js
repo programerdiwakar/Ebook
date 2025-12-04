@@ -65,12 +65,7 @@ router.get('/get-all-orders', authenticateToken, async (req, res) => {
 router.put('/update-status/:id', authenticateToken, async (req, res) => {
     try {
         const { id } = req.params;
-        const { userId } = req.headers;
-        const isAdmin = await User.findById(userId, 'role');
-        if (isAdmin.role !== 'admin') {
-            return res.status(403).json({ message: 'access denied' });
-        }
-        await Order.findByIdAndUpdate(id, { status: req.body.status });
+        await Order.findByIdAndUpdate(id,{status:req.body.status})
         return res.json({ status: 'success', message: 'Status Updated Successfully' });
 
     } catch (err) {
