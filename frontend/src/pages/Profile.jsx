@@ -4,6 +4,7 @@ import Sidebar from '../components/Profile/Sidebar';
 import { useSelector } from 'react-redux';
 import axios from 'axios';
 import Loader from '../components/Loader/Loader';
+import MobileNav from '../components/Profile/MobileNav';
 
 const Profile = () => {
   // const isLoggedIn = useSelector();
@@ -18,7 +19,7 @@ const Profile = () => {
         headers: headers
       })
       setProfile(response.data)
-      
+
     }
     fitch();
   }, [])
@@ -31,8 +32,9 @@ const Profile = () => {
         <>
           <div className='w-full md:w-1/6 md:h-screen h-auto'>
             <Sidebar data={profile} />
+            <MobileNav />
           </div>
-          <div className='w-full md:w-5/6'>
+          <div className='w-full md:w-5/6 h-auto  '>
             <Outlet />
           </div>
         </>

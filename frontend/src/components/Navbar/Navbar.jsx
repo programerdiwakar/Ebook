@@ -21,11 +21,22 @@ const Navbar = () => {
             title: 'Profile',
             link: '/profile'
         },
+        {
+            title: 'Admin Profile',
+            link: '/profile'
+        },
     ];
-    const isLoggedIn = useSelector(state => state.auth.isLoggedIn);
+    const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+    const role =useSelector((state) => state.auth.role);
 
     if (isLoggedIn == false) {
-        links.splice(2, 2); // remove two items starting from index 2
+        links.splice(2, 3); // remove Three items starting from index 2
+    }
+    if (isLoggedIn === true && role === "user") {
+         links.splice(4, 1);
+    }
+    if (isLoggedIn === true && role === "admin") {
+         links.splice(3, 1);
     }
 
     const [MobileNav, setMobileNav] = useState("hidden");
@@ -37,14 +48,14 @@ const Navbar = () => {
                     <img src="./images/logo.png" alt="" className='h-16 pt-2 ' />
                     <h1 className='text-2xl font-semibold'>BookNest</h1>
                 </Link>
-                <div className='nav-links-booknest block md:flex  items-center gap-2'>
+                <div className='nav-links-booknest block md:flex  items-center gap-4'>
                     <div className=' hidden md:flex gap-4'>
                         {links.map((items, i) => (
-                            <>
-                                {items.title === 'Profile' ? (
+                            <div className='flex items-center'>
+                                {items.title === 'Profile' || items.title === 'Admin Profile' ? (
                                     <Link to={items.link}
                                         key={i}
-                                        className='hover:text-blue-500 border border-blue-500 transition-all duration-300'>
+                                        className='hover:bg-white hover:text-zinc-800 px-4 py-1 border border-blue-500 transition-all duration-300 r rounded'>
                                         {items.title}
                                     </Link>
                                 ) : (
@@ -54,7 +65,7 @@ const Navbar = () => {
                                         {items.title}{" "}
                                     </Link>
                                 )}
-                            </>
+                            </div>
                         ))}
                     </div>
 

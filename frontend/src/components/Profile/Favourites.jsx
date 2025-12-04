@@ -24,9 +24,10 @@ const Favourites = () => {
         <img src="./images/bookmark.png" alt="" className='md:h-[20vh] h-[7vh] my-8' />
       </div>)}
 
-    <div className='grid grid-row-1 md:grid-cols-4 gap-4 '>
+      <div className='grid grid-row-1 md:grid-cols-4 gap-4 '>
       
-      {FavouriteBooks && FavouriteBooks.map((items,i) => (
+        {FavouriteBooks && FavouriteBooks.map((items, i) => (
+
         <div key={i}>
           <BookCard data={items} favourite={true} />
         </div>

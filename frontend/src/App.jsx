@@ -10,10 +10,12 @@ import Cart from './pages/Cart.jsx'
 import ViewBookDetails from './components/ViewBookDetails/ViewBookDetails.jsx';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { authActions }  from './store/auth';
+import { authActions } from './store/auth';
 import Favourites from './components/Profile/Favourites.jsx';
 import UserOrderHistory from './components/Profile/UserOrderHistory.jsx';
 import Settings from './components/Profile/Settings.jsx';
+import AllOrders from './pages/AllOrders.jsx';
+import AddBook from './pages/AddBook.jsx';
 
 
 const App = () => {
@@ -37,7 +39,8 @@ const App = () => {
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/profile" element={<Profile />} >
-          <Route index element={<Favourites />} />
+          {role === 'user' ? <Route index element={<Favourites />} /> : <Route index element={<AllOrders />} />}
+          {role === 'admin' && <Route path='/profile/add-book' element={<AddBook />} />}
           <Route path='/profile/orderHistory' element={<UserOrderHistory />} />
           <Route path='/profile/settings' element={<Settings />} />
         </Route >

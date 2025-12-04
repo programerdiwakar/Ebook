@@ -34,14 +34,11 @@ router.post('/place-order', authenticateToken, async (req, res) => {
 router.get('/get-order-history', authenticateToken, async (req, res) => {
     try {
         const { id } = req.headers;
-
         const userData = await User.findById(id).populate({
             path: 'orders',
             populate: { path: 'book' },
         });
-        console.log(userData)
         const ordersData = userData.orders.reverse();
-        console.log(ordersData)
         return res.json({ status: 'success', data: ordersData });
     } catch (err) {
         console.log(err);
