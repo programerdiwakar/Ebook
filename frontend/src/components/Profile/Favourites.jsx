@@ -6,7 +6,7 @@ const Favourites = () => {
   const[FavouriteBooks,setFavouriteBooks]=useState();
   useEffect(() => {
     const fitch = async () => {
-      const response = await axios.get("http://localhost:3000/api/v1/favourites/get-favourite-books",{headers});
+      const response = await axios.get("https://ebook-68rc.onrender.com/api/v1/favourites/get-favourite-books",{headers});
       setFavouriteBooks(response.data.data);
     }
     fitch();

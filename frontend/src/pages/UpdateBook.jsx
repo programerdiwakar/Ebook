@@ -40,7 +40,7 @@ const UpdateBook = () => {
             }
             else {
                 const response = await axios.put(
-                    "http://localhost:3000/api/v1/books/update-book",
+                    "https://ebook-68rc.onrender.com/api/v1/books/update-book",
                     Data,
                     { headers }
                 );
@@ -63,7 +63,7 @@ const UpdateBook = () => {
 
     useEffect(() => {
     const fetch = async () => {
-      const response = await axios.get(`http://localhost:3000/api/v1/books/get-book-by-id/${id}`);
+      const response = await axios.get(`https://ebook-68rc.onrender.com/api/v1/books/get-book-by-id/${id}`);
       setData(response.data.data);
     };
     fetch();

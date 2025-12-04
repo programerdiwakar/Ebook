@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const BookCard = ({ data, favourite }) => {
   const handleRemoveBook = async () => {
     const response = await axios.put(
-      "http://localhost:3000/api/v1/favourites/remove-book-from-favourites", {}, { headers }
+      "https://ebook-68rc.onrender.com/api/v1/favourites/remove-book-from-favourites", {}, { headers }
     );
     alert(response.data.message);
   };

@@ -20,7 +20,7 @@ const AllOrders = () => {
     };
     useEffect(() => {
         const fetch = async () => {
-            const response = await axios.get("http://localhost:3000/api/v1/orders/get-all-orders",
+            const response = await axios.get("https://ebook-68rc.onrender.com/api/v1/orders/get-all-orders",
                 { headers }
             );
             setAllOrders(response.data.data);
@@ -34,7 +34,7 @@ const AllOrders = () => {
     };
     const submitChanges = async (i) => {
         const id = AllOrders[i]._id;
-        const res = await axios.put(`http://localhost:3000/api/v1/orders/update-status/${id}`,
+        const res = await axios.put(`https://ebook-68rc.onrender.com/api/v1/orders/update-status/${id}`,
             Values,
             { headers }
         )

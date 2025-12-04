@@ -22,7 +22,7 @@ const SignUp = () => {
       if (Values.username === "" || Values.email === "" || Values.password === "" || Values.address === "") {
         alert("please fill all the fields");
       }
-      const response = await axios.post("http://localhost:3000/api/v1/users/signup", Values);
+      const response = await axios.post("https://ebook-68rc.onrender.com/api/v1/users/signup", Values);
       alert(response.data.message);
       setValues({
         username: "",

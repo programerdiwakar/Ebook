@@ -19,7 +19,7 @@ const Settings = () => {
 
   const submitAddress = async () => {
     try {
-      const response = await axios.put("http://localhost:3000/api/v1/users/update-address",
+      const response = await axios.put("https://ebook-68rc.onrender.com/api/v1/users/update-address",
       Value,{ headers }
     )
       alert(response.data.message);
@@ -35,7 +35,7 @@ const Settings = () => {
   useEffect(() => {
     const fetch = async () => {
       const response = await axios.get(
-        "http://localhost:3000/api/v1/users/get-user-info",
+        "https://ebook-68rc.onrender.com/api/v1/users/get-user-info",
         { headers }
       )
       setProfileData(response.data);

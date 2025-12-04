@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Outlet } from 'react-router-dom';
 import Sidebar from '../components/Profile/Sidebar';
-import { useSelector } from 'react-redux';
 import axios from 'axios';
 import Loader from '../components/Loader/Loader';
 import MobileNav from '../components/Profile/MobileNav';
@@ -15,7 +14,7 @@ const Profile = () => {
   }
   useEffect(() => {
     const fitch = async () => {
-      const response = await axios.get("http://localhost:3000/api/v1/users/get-user-info", {
+      const response = await axios.get("https://ebook-68rc.onrender.com/api/v1/users/get-user-info", {
         headers: headers
       })
       setProfile(response.data)
