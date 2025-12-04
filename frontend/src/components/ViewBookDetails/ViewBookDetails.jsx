@@ -66,7 +66,7 @@ const ViewBookDetails = () => {
         <div className='px-4 md:px-12 py-8 bg-zinc-900 flex flex-col lg:flex-row gap-8 '>
           <div className='lg:w-3/6  w-full '>
             <div className='flex flex-col lg:flex-row justify-around bg-zinc-800 rounded p-12'>
-              <img src={Data?.url} alt="" className='h-[50] md:h-[60vh] lg:h-[70vh] rounded' />
+              <img src={Data?.url} alt="" className='h-[50vh] md:h-[60vh] lg:h-[70vh] rounded' />
               {isLoggedIn && role === 'user' && (
                 <div className='flex flex-col md:flex-row lg:flex-col items-center justify-between lg:justify-start mt-8 lg:mt-0'>
                   <button className='text-3xl p-1 text-red-500 flex items-center justify-center'onClick={handleFavourites} >
