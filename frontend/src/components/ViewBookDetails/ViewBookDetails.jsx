@@ -18,7 +18,7 @@ const ViewBookDetails = () => {
   const role = useSelector((state) => state.auth.role);
   useEffect(() => {
     const fetch = async () => {
-      const response = await axios.get(`http://localhost:3000/api/v1/books/get-book-by-id/${id}`);
+      const response = await axios.get(`https://ebook-68rc.onrender.com/api/v1/books/get-book-by-id/${id}`);
       setData(response.data.data);
     };
     fetch();
@@ -32,7 +32,7 @@ const ViewBookDetails = () => {
 
   const handleFavourites = async () => {
     try {
-      const response = await axios.put("http://localhost:3000/api/v1/favourites/add-book-to-favourites", {}, { headers })
+      const response = await axios.put("https://ebook-68rc.onrender.com/api/v1/favourites/add-book-to-favourites", {}, { headers })
     alert(response.data.message)
     }
     catch (err) {
@@ -43,7 +43,7 @@ const ViewBookDetails = () => {
 
   const handleCart = async () => {
     try {
-      const response = await axios.put("http://localhost:3000/api/v1/cart/add-to-cart", {}, { headers });
+      const response = await axios.put("https://ebook-68rc.onrender.com/api/v1/cart/add-to-cart", {}, { headers });
       alert(response.data.message)
     }
     catch (error) {
@@ -53,7 +53,7 @@ const ViewBookDetails = () => {
   };
 
   const deleteBook = async () => {
-    const res = await axios.delete('http://localhost:3000/api/v1/books/delete-book',
+    const res = await axios.delete('https://ebook-68rc.onrender.com/api/v1/books/delete-book',
       { headers }
     )
     alert(res.data.message);
