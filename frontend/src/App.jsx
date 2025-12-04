@@ -16,6 +16,7 @@ import UserOrderHistory from './components/Profile/UserOrderHistory.jsx';
 import Settings from './components/Profile/Settings.jsx';
 import AllOrders from './pages/AllOrders.jsx';
 import AddBook from './pages/AddBook.jsx';
+import UpdateBook from './pages/UpdateBook.jsx';
 
 
 const App = () => {
@@ -38,6 +39,7 @@ const App = () => {
         <Route path="/signIn" element={<SignIn />} />
         <Route path="/signUp" element={<SignUp />} />
         <Route path="/cart" element={<Cart />} />
+        <Route path="/update/:id" element={<UpdateBook />} />
         <Route path="/profile" element={<Profile />} >
           {role === 'user' ? <Route index element={<Favourites />} /> : <Route index element={<AllOrders />} />}
           {role === 'admin' && <Route path='/profile/add-book' element={<AddBook />} />}

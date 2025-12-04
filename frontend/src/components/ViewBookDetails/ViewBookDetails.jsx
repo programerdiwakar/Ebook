@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import axios from "axios";
-import { useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import { GrLanguage } from "react-icons/gr";
 import { GoHeartFill } from "react-icons/go";
@@ -9,8 +9,10 @@ import { useSelector } from 'react-redux';
 import { BiSolidEdit } from "react-icons/bi";
 import { MdDeleteOutline } from "react-icons/md";
 
+
 const ViewBookDetails = () => {
   const { id } = useParams(); // useParams help to access dynamic parameters from the current URL path
+  const navigate = useNavigate()
   const [Data, setData] = useState();
   const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
   const role = useSelector((state) => state.auth.role);
@@ -42,12 +44,21 @@ const ViewBookDetails = () => {
   const handleCart = async () => {
     try {
       const response = await axios.put("http://localhost:3000/api/v1/cart/add-to-cart", {}, { headers });
-    alert(response.data.message)
+      alert(response.data.message)
     }
     catch (error) {
       alert(error.response.data.message);
+      
     }
-  }
+  };
+
+  const deleteBook = async () => {
+    const res = await axios.delete('http://localhost:3000/api/v1/books/delete-book',
+      { headers }
+    )
+    alert(res.data.message);
+    navigate("/all-books");
+  };
 
   return (
     <>
@@ -71,11 +82,11 @@ const ViewBookDetails = () => {
 
               {isLoggedIn && role === 'admin' && (
                 <div className='flex flex-col md:flex-row lg:flex-col items-center justify-between lg:justify-start mt-4 lg:mt-0'>
-                  <button className='text-3xl p-3 text-white flex items-center justify-center' >
+                  <Link to={`/update/${id}`} className='text-3xl p-3 text-white flex items-center justify-center' >
                     <BiSolidEdit />
                     <span className='ms-2 block lg:hidden '>Edit</span>
-                  </button>
-                  <button className='text-3xl mt-8 md:mt-0 p-3 text-yellow-500  lg:mt-4 flex items-center justify-center'>
+                  </Link>
+                  <button className='text-3xl mt-8 md:mt-0 p-3 text-yellow-500  lg:mt-4 flex items-center justify-center' onClick={deleteBook}>
                     <MdDeleteOutline />
                     <span className='ms-2 block lg:hidden '>Delete</span>
                   </button>
