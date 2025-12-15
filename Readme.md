@@ -1,4 +1,3 @@
-...existing code...
 # BookNest (Ebook) — Fullstack MERN App
 
 Live demo: https://ebook-frontend-nkdp.onrender.com
@@ -112,4 +111,3 @@ Do not use these credentials in production. Create a secure admin account or see
 If you want, I can:
 - open a PR patching the AddBook/UpdateBook typo and the Settings binding,
 - or generate a sample `.env` and a quick PowerShell script to run both servers.
-...existing code...
